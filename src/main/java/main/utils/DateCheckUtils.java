@@ -8,6 +8,12 @@ import java.util.stream.Collectors;
 
 public class DateCheckUtils {
     private DateCheckUtils(){ }
+
+    /**
+     * Метод проверяем, располагаются ли даты в переданном списке в порядке увеличения.
+     * @param localDates список дат
+     * @return boolean
+     */
     public static boolean isDatesInAscOrder(final List<LocalDate> localDates) {
         List<LocalDate> localDatesWithoutNull = localDates
                 .stream()
@@ -29,11 +35,5 @@ public class DateCheckUtils {
             previous = current;
         }
         return true;
-    }
-
-    public static void throwExceptionIfDatesIsNotInAscOrder(final List<LocalDate> localDates, RuntimeException runtimeException) {
-        if (!isDatesInAscOrder(localDates)) {
-            throw runtimeException;
-        }
     }
 }

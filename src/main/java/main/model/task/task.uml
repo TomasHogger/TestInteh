@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.model.task</OriginalElement>
+  <nodes>
+    <node x="272.0" y="0.0">main.model.task.abstr.TaskObject</node>
+    <node x="0.0" y="160.0">main.model.task.impl.FeatureTask</node>
+    <node x="168.0" y="80.0">main.model.task.abstr.Task</node>
+    <node x="424.0" y="80.0">main.model.task.impl.Project</node>
+    <node x="155.99999999999997" y="160.0">main.model.task.impl.BugTask</node>
+    <node x="268.0" y="80.0">main.model.task.impl.Requirement</node>
+    <node x="280.0" y="160.0">main.model.task.impl.ImprovementTask</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.model.task.impl.Requirement" target="main.model.task.abstr.TaskObject">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="main.model.task.impl.ImprovementTask" target="main.model.task.abstr.Task">
+      <point x="0.0" y="-15.0" />
+      <point x="364.0" y="135.0" />
+      <point x="234.66666666666666" y="135.0" />
+      <point x="26.666666666666657" y="15.0" />
+    </edge>
+    <edge source="main.model.task.impl.FeatureTask" target="main.model.task.abstr.Task">
+      <point x="0.0" y="-15.0" />
+      <point x="68.0" y="135.0" />
+      <point x="181.33333333333334" y="135.0" />
+      <point x="-26.666666666666657" y="15.0" />
+    </edge>
+    <edge source="main.model.task.abstr.Task" target="main.model.task.abstr.TaskObject">
+      <point x="0.0" y="-15.0" />
+      <point x="208.0" y="55.0" />
+      <point x="293.3333333333333" y="55.0" />
+      <point x="-42.666666666666686" y="15.0" />
+    </edge>
+    <edge source="main.model.task.impl.BugTask" target="main.model.task.abstr.Task">
+      <point x="2.8421709430404007E-14" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="main.model.task.impl.Project" target="main.model.task.abstr.TaskObject">
+      <point x="0.0" y="-15.0" />
+      <point x="476.0" y="55.0" />
+      <point x="378.66666666666663" y="55.0" />
+      <point x="42.66666666666663" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="264.0" y="95.0" />
+  <SelectedNodes>
+    <node>main.model.task.impl.Requirement</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

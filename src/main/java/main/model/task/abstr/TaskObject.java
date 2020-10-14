@@ -2,10 +2,7 @@ package main.model.task.abstr;
 
 import lombok.Getter;
 import lombok.Setter;
-import main.exception.DateTaskException;
-import main.exception.IllegalCompletedDateException;
-import main.exception.ReadinessValueException;
-import main.exception.StatusAndReadinessIncorrect;
+import main.exception.*;
 import main.model.employee.Employee;
 import main.model.state.TaskState;
 import main.utils.DateCheckUtils;
@@ -70,26 +67,32 @@ public abstract class TaskObject {
                       List<? extends TaskObject> subTask) {
 
         if (!DateCheckUtils.isDatesInAscOrder(Arrays.asList(createDate, startDate, completedDate))) {
-            throw new DateTaskException(createDate, startDate, completedDate);
+            throw new IllegalTaskArgumentsException(
+                    "Not available date. Create date %s, start date %s, completed date %s".formatted(
+                            createDate,
+                            startDate,
+                            completedDate));
         }
 
         if (taskState != TaskState.NEW && startDate == null) {
-            throw new StatusAndReadinessIncorrect("You need to set startDate with task state NEW");
+            throw new IllegalTaskArgumentsException("You need to set startDate with task state NEW");
         }
 
         if (taskState == TaskState.COMPLETED
                 && (completedDate == null || readiness < FULL_COMPLETED)) {
-            throw new StatusAndReadinessIncorrect("You need to set completedDate and readiness to 100 with task state COMPLETED");
+            throw new IllegalTaskArgumentsException(
+                    "You need to set completedDate and readiness to 100 with task state COMPLETED");
         }
 
         if (readiness < START || readiness > FULL_COMPLETED) {
-            throw new ReadinessValueException(readiness);
+            throw new IllegalTaskArgumentsException("Value is %d. Available from 1 to 100".formatted(readiness));
         }
 
         if (subTask != null
                 && subTask.stream().allMatch(task -> task.getTaskState() == TaskState.COMPLETED)
                 && (taskState != TaskState.COMPLETED || readiness != FULL_COMPLETED)) {
-            throw new StatusAndReadinessIncorrect("All sub task completed. Set status to COMPLETED and Readiness to 100");
+            throw new IllegalTaskArgumentsException(
+                    "All sub task completed. Set status to COMPLETED and Readiness to 100");
         }
 
         if (subTask != null
@@ -99,7 +102,8 @@ public abstract class TaskObject {
                                 .filter(Objects::nonNull)
                                 .max(LocalDate::compareTo)
                                 .orElse(null))) {
-            throw new IllegalCompletedDateException();
+            throw new IllegalTaskArgumentsException(
+                    "Completed date must equals max completed date in sub task or null");
         }
 
         this.createDate = createDate;

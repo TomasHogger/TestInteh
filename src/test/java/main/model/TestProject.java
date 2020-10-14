@@ -1,7 +1,6 @@
 package main.model;
 
-import main.exception.IllegalCompletedDateException;
-import main.exception.StatusAndReadinessIncorrect;
+import main.exception.IllegalTaskArgumentsException;
 import main.model.employee.Employee;
 import main.model.state.TaskState;
 import main.model.task.impl.BugTask;
@@ -32,7 +31,7 @@ public class TestProject {
         JsonLogger.log(testResult);
     }
 
-    @Test(expected = StatusAndReadinessIncorrect.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongReadinessValueAndTaskStatusForProjectWithAllCompletedRequirements() {
         testResult.setTestName("testWrongReadinessValueAndTaskStatusForProjectWithAllCompletedRequirements");
 
@@ -87,7 +86,7 @@ public class TestProject {
                 Arrays.asList(requirement1, requirement2));
     }
 
-    @Test(expected = IllegalCompletedDateException.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongCompletedDateForProject() {
         testResult.setTestName("testWrongCompletedDateForProject");
 

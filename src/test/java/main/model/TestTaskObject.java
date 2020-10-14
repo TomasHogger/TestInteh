@@ -1,7 +1,6 @@
 package main.model;
 
-import main.exception.DateTaskException;
-import main.exception.StatusAndReadinessIncorrect;
+import main.exception.IllegalTaskArgumentsException;
 import main.model.employee.Employee;
 import main.model.state.TaskState;
 import main.model.task.abstr.TaskObject;
@@ -31,7 +30,7 @@ public class TestTaskObject {
     }
 
 
-    @Test(expected = DateTaskException.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongCreateDate() {
 
         testResult.setTestName("testWrongCreateDate");
@@ -50,7 +49,7 @@ public class TestTaskObject {
         };
     }
 
-    @Test(expected = DateTaskException.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongStartDate() {
 
         testResult.setTestName("testWrongStartDate");
@@ -69,7 +68,7 @@ public class TestTaskObject {
         };
     }
 
-    @Test(expected = DateTaskException.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongCompletedDate() {
 
         testResult.setTestName("testWrongCompletedDate");
@@ -88,7 +87,7 @@ public class TestTaskObject {
         };
     }
 
-    @Test(expected = StatusAndReadinessIncorrect.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongCreateDateWithNotNewState() {
 
         testResult.setTestName("testWrongCreateDateWithNotNewState");
@@ -107,7 +106,7 @@ public class TestTaskObject {
         };
     }
 
-    @Test(expected = StatusAndReadinessIncorrect.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongCompletedDateWithCompletedStatus() {
 
         testResult.setTestName("testWrongCompletedDateWithCompletedStatus");
@@ -126,7 +125,7 @@ public class TestTaskObject {
         };
     }
 
-    @Test(expected = StatusAndReadinessIncorrect.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongReadinessValueWithCompletedStatus() {
 
         testResult.setTestName("testWrongReadinessValueWithCompletedStatus");

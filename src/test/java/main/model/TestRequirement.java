@@ -1,7 +1,6 @@
 package main.model;
 
-import main.exception.IllegalCompletedDateException;
-import main.exception.StatusAndReadinessIncorrect;
+import main.exception.IllegalTaskArgumentsException;
 import main.model.employee.Employee;
 import main.model.state.TaskState;
 import main.model.task.abstr.Task;
@@ -33,7 +32,7 @@ public class TestRequirement {
     }
 
 
-    @Test(expected = StatusAndReadinessIncorrect.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongReadinessValueAndTaskStatusForRequirementWithAllCompletedTasks() {
 
         testResult.setTestName("testWrongReadinessValueAndTaskStatusForRequirementWithAllCompletedTasks");
@@ -63,7 +62,7 @@ public class TestRequirement {
                 Arrays.asList(task1, task2));
     }
 
-    @Test(expected = IllegalCompletedDateException.class)
+    @Test(expected = IllegalTaskArgumentsException.class)
     public void testWrongCompletedDateForRequirement() {
 
         testResult.setTestName("testWrongCompletedDateForRequirement");
